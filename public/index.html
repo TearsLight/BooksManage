@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍管理系统</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <!-- 消息提示 -->
+            <div id="message" class="message"></div>
+
+            <!-- 添加书籍表单 -->
+            <div class="form-section">
+                <h2>添加新书籍</h2>
+                <form id="addBookForm">
+                    <div class="form-group">
+                        <label for="book">书籍名称：</label>
+                        <input type="text" id="book" name="book" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">作者名：</label>
+                        <input type="text" id="author" name="author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="summary">书籍简介：</label>
+                        <textarea id="summary" name="summary" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="subDate">发布日期：</label>
+                        <input type="date" id="subDate" name="subDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">添加书籍</button>
+                </form>
+            </div>
+
+            <!-- 书籍列表 -->
+            <div class="books-list">
+                <h2>书籍列表</h2>
+                <div id="booksList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 编辑书籍模态框 -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>编辑书籍</h2>
+                <button class="close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="editBookForm">
+                <input type="hidden" id="editIndex">
+                <div class="form-group">
+                    <label for="editBook">书籍名称：</label>
+                    <input type="text" id="editBook" name="book" required>
+                </div>
+                <div class="form-group">
+                    <label for="editAuthor">作者名：</label>
+                    <input type="text" id="editAuthor" name="author" required>
+                </div>
+                <div class="form-group">
+                    <label for="editSummary">书籍简介：</label>
+                    <textarea id="editSummary" name="summary" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editSubDate">发布日期：</label>
+                    <input type="date" id="editSubDate" name="subDate" required>
+                </div>
+                <button type="submit" class="btn btn-success">保存修改</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 查看内容模态框 -->
+    <div id="contentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>书籍内容</h2>
+                <button class="close-btn" onclick="closeContentModal()">&times;</button>
+            </div>
+            <div>
+                <button class="btn btn-info btn-sm" onclick="readContent('sync')">同步读取</button>
+                <button class="btn btn-info btn-sm" onclick="readContent('async')">异步读取</button>
+            </div>
+            <div id="contentDisplay" class="content-display">点击上方按钮读取内容...</div>
+            <div style="margin-top: 20px;">
+                <h3>写入新内容：</h3>
+                <textarea id="newContent" class="form-group" style="width: 100%; padding: 10px; margin-top: 10px;"></textarea>
+                <button class="btn btn-success" style="margin-top: 10px;" onclick="writeContent()">写入内容</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/scripts.js"></script>
+</body>
+</html>
